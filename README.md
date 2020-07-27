@@ -1,2 +1,2 @@
 # CODE
-Same as on my Desktop
+The CODE repository. Same as on my desktop.
