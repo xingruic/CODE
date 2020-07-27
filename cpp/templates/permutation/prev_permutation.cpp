@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+/*
 template<typename It>
 bool next_permutation(It begin, It end){
     if (begin == end)
@@ -16,8 +16,7 @@ bool next_permutation(It begin, It end){
         --i;
         if (*i < *j){
             It k = end;
-            while (!(*i < *--k))
-                /* pass */;
+            while (!(*i < *--k)){}
             iter_swap(i, k);
             reverse(j, end);
             return true;
@@ -28,7 +27,7 @@ bool next_permutation(It begin, It end){
         }
     }
 }
-/*
+*/
 template<typename It>
 bool prev_permutation(It begin, It end){
     if (begin == end)
@@ -55,7 +54,6 @@ bool prev_permutation(It begin, It end){
         }
     }
 }
-*/
 int main(){
 		int a[5] = {1,2,3,4};
 		string v = "abcde";
