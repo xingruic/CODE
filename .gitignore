@@ -26,6 +26,9 @@
 *.a
 *.lib
 
+# Non related Stuff
+people
+
 # Executables
 # *.exe
 # *.out
