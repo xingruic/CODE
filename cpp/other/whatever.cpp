@@ -1,3 +1,8 @@
-#include<bits/stdc++.h>
+#include<iostream>
 using namespace std;
-int main(){/*whatever*/}
+int main(){
+  char c;
+  cin>>c;
+  c = (char)((int)c-32);
+  cout<<c<<endl;
+}
