@@ -1,4 +1,6 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<string>
+#include<algorithm>
 using namespace std;
 void cout_sum(string a, string b){
 	int ia[max(a.size(),b.size())]={0}, ib[max(a.size(),b.size())]={0}, ans[max(a.size(),b.size())+1]={0};
