@@ -8,10 +8,19 @@ void to_lower(string &s){
     }
     return;
 }
+// int _hash(string s){
+//     int sum=0;
+//     for(int i=0; i<s.size(); i++) sum+=i*s[i];
+//     return sum%1000000007;
+// }
 int _hash(string s){
-    int sum=0;
-    for(int i=0; i<s.size(); i++) sum+=i*s[i];
-    return sum%1000000007;
+   unsigned int seed = 131;
+   unsigned int hash = 0;
+   unsigned int i    = 0;
+   for (i = 0; i < s.size(); i++){
+      hash = (hash * seed) + (s[i]);
+   }
+   return hash%1000000007;
 }
 vector<int> rk(string large, string find){
     int hashf=_hash(find);
