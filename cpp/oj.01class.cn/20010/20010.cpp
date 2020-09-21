@@ -1,4 +1,6 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<algorithm>
+#include<string>
 using namespace std;
 struct farmer{
   int price;

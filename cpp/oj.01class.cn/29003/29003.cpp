@@ -7,7 +7,8 @@ int main(){
 	for(int i=1; i<=items; i++){
 		cin>>weight[i]>>value[i];
 	}
-	int dp[items+1][time+1]={{0}};
+	int dp[items+1][time+1];
+	memset(dp,0,sizeof(dp));
 	for(int i=0; i<=items; i++){
 		for(int j=0; j<=time; j++){
 			dp[i][j]=0;
