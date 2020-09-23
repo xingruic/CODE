@@ -8,6 +8,7 @@ using namespace std;
 int main(){
     freopen("beads.in","r",stdin);
     freopen("beads.out","w",stdout);
+    int t1=clock();
     int n;
     cin>>n;
     string s;
@@ -67,4 +68,5 @@ int main(){
         }
     }
     cout<<min(mx,n/2)<<endl;
+    cout<<(int)clock()-t1<<endl;
 }
