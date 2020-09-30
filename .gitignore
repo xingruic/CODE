@@ -31,6 +31,12 @@
 *.out
 *.apps
 
+# Mac
+.DS_Store
+
+# Anything Else
+testing.cpp
+
 *
 !/**/
 !*.*
