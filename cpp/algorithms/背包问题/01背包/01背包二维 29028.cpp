@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-//oj.01class.cn/problem/29028 ×°ÏäÎÊÌâ 
+//oj.01class.cn/problem/29028 ×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 int main(){
   int v,n;
   cin>>v>>n;
