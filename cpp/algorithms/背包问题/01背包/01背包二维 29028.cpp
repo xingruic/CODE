@@ -1,10 +1,10 @@
 #include<bits/stdc++.h>
 using namespace std;
-//oj.01class.cn/problem/29028 װ������
+//oj.01class.cn/problem/29028
 int main(){
   int v,n;
   cin>>v>>n;
-  int w[n+1]={0};
+  int w[10000]={0};
   for(int i=1; i<=n; i++){
     cin>>w[i];
   }

@@ -1,6 +1,5 @@
 #include<bits/stdc++.h>
 using namespace std;
-//oj.01class.cn/problem/29003
 int main(){
 	int t,m;
 	cin>>t>>m;
