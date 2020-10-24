@@ -2,6 +2,8 @@
 using namespace std;
 int main(){
     string k,text;
+    // k="AaaB";
+    // text="abcfefgjijknmnorqrsvuvwzyzADCDEHGHILKLMPOPQTSTUXWXYB";
     cin>>k>>text;
     char a['Z'+5]['Z'+5];
     for(int i='A'; i<='Z'; i++){
