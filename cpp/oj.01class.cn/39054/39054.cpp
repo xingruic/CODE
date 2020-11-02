@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 int main(){
+    freopen("39054.in","r",stdin);
+    freopen("39054.out","w",stdout);
     string k,text;
     // k="AaaB";
     // text="abcfefgjijknmnorqrsvuvwzyzADCDEHGHILKLMPOPQTSTUXWXYB";

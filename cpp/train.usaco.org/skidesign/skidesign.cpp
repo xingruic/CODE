@@ -10,44 +10,50 @@ int main(){
     freopen("skidesign.out","w",stdout);
     int n;
     cin>>n;
-    int a[n];
-    for(int i=0; i<n; i++) cin>>a[i];
-    int change[n];
-    memset(change,0,sizeof(change));
-    int price=0;
-    sort(a,a+n);
-    do{
-        // cout<<a[0]<<endl<<a[n-1]<<endl;
-        bool b=0;
-        while(a[n-1]-a[0]>17){
-            if(b){
-                a[n-1]--;
-                change[n-1]++;
-            }else{
-                a[0]++;
-                change[0]++;
-            }
-            b=!b;
-        }
-        cout<<a[n-1]<<endl<<a[0]<<endl<<endl;
-        // cout<<"-----"<<endl<<change[0]<<endl<<change[n-1]<<endl<<"-----"<<endl;
-        for(int i=0; i<n; i++){
-            for(int j=1; j<n; j++){
-                if(a[j-1]>a[j]){
-                    swap(a[j-1],a[j]);
-                    swap(change[j-1],change[j]);
-                }
-            }
-        }
-    }while(a[n-1]-a[0]>17);
-    cout<<"-------------------------"<<endl;
+    int a[n],b[n];
     for(int i=0; i<n; i++){
-        cout<<a[i]<<endl;
+        cin>>a[i];
+        b[i]=a[i];
     }
-    cout<<"-------------------------"<<endl;
+    // sort(a,a+n);
+    // sort(b,b+n);
+    // for(int i=0; i<=n/2; i++){
+    //     for(int j=1; j<n-i-i+1; j++)
+    //     if(abs(a[i]-a[n-i-j])>17){
+    //         bool t=0;
+    //         while(abs(a[i]-a[n-i-1])>17){
+    //             if(t) a[i]++;
+    //             else a[n-i-1]--;
+    //             t=!t;
+    //         }
+    //         // cout<<a[i]<<endl;
+    //     }
+    // }
+    int x,y;
+    int m=0,p=0x7fffffff;
     for(int i=0; i<n; i++){
-        cout<<change[i]<<endl;
-        price+=change[i]*change[i];
+        if(a[i]>m){
+            m=a[i];
+            x=i;
+        }if(a[i]<p){
+            p=a[i];
+            y=i;
+        }
     }
-    cout<<price<<endl;
+    int cnt=0x7fffffff;
+    for(int i=p; i<=m-17; i++){
+        int t=0;
+        for(int j=0; j<n; j++){
+            if(a[j]<i){
+                t+=(i-a[j])*(i-a[j]);
+            }else if(a[j]>i+17){
+                t+=(a[j]-i-17)*(a[j]-i-17);
+            }
+        }
+        cnt=min(cnt,t);
+    }
+    for(int i=0; i<n; i++){
+        // cout<<a[i]<<endl;
+    }
+    cout<<cnt<<endl;
 }
