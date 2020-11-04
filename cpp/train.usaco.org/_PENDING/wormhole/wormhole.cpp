@@ -30,9 +30,9 @@ void worm(){
         }
     }
     if(!t){
-        for(int i=1; i<=n; i++){
-            cout<<i<<':'<<p[i]<<' ';
-        }cout<<check()<<endl;
+        // for(int i=1; i<=n; i++){
+        //     cout<<i<<':'<<p[i]<<' ';
+        // }cout<<check()<<endl;
         if(check()) cnt++;
     }
 }
