@@ -1,14 +1,12 @@
 #include<bits/stdc++.h>
 using namespace std;
-void f(vector<int> p=vector<int>(),int i=0){
-	if(i==3){
-		for(int i=0; i<p.size(); i++) cout<<p[i]<<' ';
-		cout<<endl;
-	}
-	f(p,i+1);
-	p.push_back(i);
-	f(p,i+1);
+bool prime(int x){
+    if(x<2) return 0;
+    for(int i=2; i*i<=x; i++){
+        if(x%i==0) return 0;
+    }
+    return 1;
 }
 int main(){
-	f();
+	cout<<prime(2331)<<endl;
 }
