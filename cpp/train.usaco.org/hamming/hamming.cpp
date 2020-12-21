@@ -35,7 +35,6 @@ int main(){
         // printbits(t);
         if((i+1)%10) cout<<t<<' ';
         else cout<<t<<endl;
-        int t1=t;
         t=newcode(t);
     }
     cout<<t<<endl;
