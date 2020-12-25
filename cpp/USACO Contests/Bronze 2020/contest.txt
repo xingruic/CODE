@@ -1,0 +1,9 @@
+if there are big inputs or outputs, put the line of code down below at the top of main()
+ios_base::sync_with_stdio(false); cin.tie(0);
+
+REMEMBER:
+
+Don't just use the example input, make your own ones and make sure your program works with all cases!
+Get code from CODE/cpp/algorithms to solve faster!
+
+DONT USE FREOPEN!!!!!
