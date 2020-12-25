@@ -9,6 +9,8 @@ int n = 0;
 int arr[110][110];
 int con[110][110];
 int main() {
+    freopen("concom.in","r",stdin);
+    freopen("concom.out","w",stdout);
 	memset(arr, 0, sizeof(arr));
 	memset(con, 0, sizeof(con));
 	scanf("%d", &m);
