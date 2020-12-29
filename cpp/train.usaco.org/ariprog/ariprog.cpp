@@ -23,7 +23,7 @@ int main(){
     for(int a=0; a+2<=2*m*m; a++){
         if(!s[a]) continue;
         bool t=0;
-        // `a+b*(n-1)`, decrease iterations from `a+b`
+        // `a+b*(n-1)`, less iterations than `a+b`
         for(int b=1; a+b*(n-1)<=2*m*m; b++){
             if(!s[a+b]||!s[a+2*b]) continue;
             if(a+b>2*m*m){

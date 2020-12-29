@@ -1,19 +1,32 @@
+/*
+ID:xingrui1
+LANG:C++
+TASK:nocows
+*/
 #include<bits/stdc++.h>
 using namespace std;
-int n,k,a[100][200]={0};
+int n,k;
+int dp[200][200];
+int nocows(int i,int j){
+    if(j<1) return 0;
+    if(dp[i][j]!=-1) return dp[i][j];
+    if(i<2) return dp[i][j]=i;
+    int cnt=0;
+    for(int l=1; l<i; l++){
+        cnt+=(nocows(l,j-1)*nocows(i-1-l,j-1))%9901;
+        cnt%=9901;
+    } 
+    return dp[i][j]=cnt;
+}
 int main(){
+    memset(dp,-1,sizeof(dp));
     freopen("nocows.in","r",stdin);
     freopen("nocows.out","w",stdout);
-	cin>>n>>k;
-    a[1][1]=1;
-    a[2][3]=1;
-    a[3][5]=2;
-    a[3][7]=1;
-    a[4][7]=2*2;
-    a[4][9]=2*1+4;
-    for(int i=3; i<100; i++){
-        for(int j=1; j<200; j++){
-            a[i][j]+=a[i-1][j-2]*
-        }
-    }
+    cin>>n>>k;
+    // cout<<(nocows(n,k)-(dp[n][k-1]==-1?0:dp[n][k-1])+9901)%9901<<endl;
+    cout<<(nocows(n,k)-nocows(n,k-1)+9901)%9901<<endl;
+    // for(int i=0; i<=n; i++){
+    //     for(int j=0; j<=k; j++) cout<<dp[i][j]<<' ';
+    //     cout<<endl;
+    // }
 }
