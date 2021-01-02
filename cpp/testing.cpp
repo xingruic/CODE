@@ -1,12 +1,15 @@
 #include<bits/stdc++.h>
 using namespace std;
-bool prime(int x){
-    if(x<2) return 0;
-    for(int i=2; i*i<=x; i++){
-        if(x%i==0) return 0;
+int ip=0; // insertion point = ip, to mark where to insert characters
+void append(char ans[],string str){
+    int stop=ip+str.size();
+    for(int i=ip; i<stop; i++){
+        ans[i]=str[i-ip];
     }
-    return 1;
+    return;
 }
 int main(){
-	cout<<prime(2331)<<endl;
+	char ans[100]={0};
+    append(ans,"hello");
+    for(int i=0; i<10; i++) cout<<ans[i]<<endl;
 }

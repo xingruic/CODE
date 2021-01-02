@@ -65,7 +65,7 @@ string div(string a, string b, char c){
 		}//i是temp最后一位的下标
 		/********************* 
 		借位时往商的后面添零 |
-		                    \/
+		                   \/
 		*********************/
 		if(temp.size()>b.size()){
 			Q=Q+'0';
