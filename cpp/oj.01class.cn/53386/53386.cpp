@@ -14,8 +14,8 @@ int main(){
     for(int i=0; i<t; i++){
         int q,b,c;
         cin>>q>>b>>c;
-        a[q][b]=c;
-        a[b][q]=c;
+        a[q][b]=min(a[q][b],c);
+        a[b][q]=min(a[b][q],c);
     }
     bool included[n+1];
     memset(included,0,sizeof(included));
@@ -26,7 +26,7 @@ int main(){
             if(included[i]){
                 for(int j=1; j<=n; j++){
                     if(a[i][j]<0x33333333){
-                        cout<<a[i][j]<<' '<<i<<' '<<j<<endl;
+                        // cout<<a[i][j]<<' '<<i<<' '<<j<<endl;
                         if(!included[j]) did_stuff=1;
                         included[j]=1;
                         if(dist[j]>dist[i]+a[i][j]){
