@@ -1,58 +1,72 @@
 #include<bits/stdc++.h>
 using namespace std;
+int x1=-1,_y1=-1,x2=-1,y2=-1;
 struct cell{
-    bool up=0,down=0,left=0,right=0;
-};
-
+    bool up=1,down=1,left=1,right=1;
+}cells[101][39];
 int w,h;
-
-char maze[16000][16000]={{0}};
-
-cell cells[8000][8000];
-
-int i1=-1,j1=-1,i2=-1,j2=-1;
-
-int filled[8000][8000]={{0}};
-
-void fill(int i,int j,int num=0,vector<pair<int,int>> passed=vector<pair<int,int>>()){
-    if(i<0||j<0||i>=h*2+1||j>=w*2+1) return;
-    for(auto k:passed) if(i==k.first&&j==k.second) return;
-    passed.push_back(make_pair(i,j));
-    filled[i][j]=num;
-    if(cells[i][j].up) fill(i-1,j,num+1,passed);
-    if(cells[i][j].down) fill(i+1,j,num+1,passed);
-    if(cells[i][j].right) fill(i,j+1,num+1,passed);
-    if(cells[i][j].left) fill(i,j-1,num+1,passed);
+int dijkstra(int starti,int startj,int endi,int endj){
+    bool in[w][h];
+    memset(in,0,sizeof(in));
+    int a=starti,b=startj,c=endi,d=endj;
+    in[a][b]=1;
+    int dist[w][h];
+    memset(dist,0x3d,sizeof(dist));
+    dist[a][b]=0;
+    while(1){
+        bool did_something=0;
+        for(int i=0; i<h; i++){
+            for(int j=0; j<w; j++){
+                if(in[i][j]){
+                    if(i>0&&cells[i][j].up&&cells[i-1][j].down&&!in[i-1][j]){
+                        dist[i-1][j]=dist[i][j]+1;
+                        in[i-1][j]=1;
+                        did_something=1;
+                    }
+                    if(j>0&&cells[i][j].left&&cells[i][j-1].right&&!in[i][j-1]){
+                        dist[i][j-1]=dist[i][j]+1;
+                        in[i][j-1]=1;
+                        did_something=1;
+                    }
+                    if(i<h-1&&cells[i][j].down&&cells[i+1][j].up&&!in[i+1][j]){
+                        dist[i+1][j]=dist[i][j]+1;
+                        in[i+1][j]=1;
+                        did_something=1;
+                    }
+                    if(j<w-1&&cells[i][j].right&&cells[i][j+1].left&&!in[i][j-1]){
+                        dist[i][j+1]=dist[i][j]+1;
+                        in[i][j+1]=1;
+                        did_something=1;
+                    }
+                }
+            }
+        }
+        if(!did_something) break;
+    }
+    return dist[c][d];
 }
 int main(){
     freopen("maze1.in","r",stdin);
     freopen("maze1.out","w",stdout);
     cin>>w>>h;
-    int n=h*2+1,m=w*2+1;
-    for(int i=0; i<n; i++){
-        for(int j=0; j<m; j++){
-            maze[i][j]=getchar();
-            if(maze[i][j]=='\n') maze[i][j]=getchar();
+    char input[h*2+1][w*2+1];
+    for(int i=0; i<h*2+1; i++){
+        for(int j=0; j<w*2+1; j++){
+            input[i][j]=getchar();
+            if(input[i][j]=='\n') input[i][j]=getchar();
         }
     }
-    for(int i=1; i<n; i+=2){
-        for(int j=1; j<m; j+=2){
-            cells[i][j].up=maze[i-1][j]!=' ';
-            cells[i][j].down=maze[i+1][j]!=' ';
-            cells[i][j].left=maze[i][j-1]!=' ';
-            cells[i][j].right=maze[i][j+1]!=' ';
-            if(i==1&&!cells[i][j].up){
-                if(i1==-1) i1=i,j1=j;
-                else i2=i,j2=j;
+    for(int i=0; i<h; i++){
+        for(int j=0; j<w; j++){
+            int x=2*i+1,y=2*j+1;
+            bool up=(input[x-1][y]=='-'),down=(input[x+1][y]=='-'),left=(input[x][y-1]=='|'),right=(input[x][y+1]=='|');
+            cout<<up<<right<<down<<left<<' ';
+            cells[i][j].up=up,cells[i][j].down=down,cells[i][j].left=left,cells[i][j].right=right;
+            if(i==0&&!up||j==0&&!left||i==h-1&&!down||j==w-1&&right){
+                if(x1==-1) x1=x,_y1=y;
+                else x2=x,y2=y;
             }
-        }
+        }cout<<endl;
     }
-    int minsteps=0x7fffffff;
-    for(int i=0; i<n; i++){
-        for(int j=0; j<m; j++){
-            fill(i,j);
-            minsteps=min(minsteps,min(filled[i1][j1],filled[i2][j2]));
-        }
-    }
-    cout<<minsteps<<endl;
+    cout<<dijkstra(0,0,0,1)<<endl;
 }
