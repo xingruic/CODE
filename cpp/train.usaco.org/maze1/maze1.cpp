@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+
 int x1=-1,_y1=-1,x2=-1,y2=-1;
 struct cell{
     bool up=1,down=1,left=1,right=1;
