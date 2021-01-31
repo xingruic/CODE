@@ -36,6 +36,7 @@
 # *.out
 *.apps
 
-**/.DS_Store
+**/HOMEWORK.txt
 
-**/.vscode
+**/testing.cpp
+**/texting.exe
