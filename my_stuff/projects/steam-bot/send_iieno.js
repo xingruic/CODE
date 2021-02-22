@@ -4,7 +4,7 @@ var client = new SteamUser();
 
 var username = "usedtoilet666";
 var password = "Chenxi202";
-var message = "message from my steam bot";
+var message = ".";
 
 client.logOn({
 	"accountName": username,
@@ -13,20 +13,19 @@ client.logOn({
 
 var iieno = new SteamID("[U:1:1080833819]");
 function send_iieno(i=1){
-    if(i>5) return;
+    if(i>50) process.exit();
     client.chatMessage(iieno, message);
-    console.log("sent message to iieno");
+    console.log("[MSG] sent message to iieno");
     setTimeout(
         function() {
             send_iieno(i+1);
         },
-        180000
+        50
     );
 }
 
 client.on('loggedOn', function(details) {
 	console.log("[LOGIN] Logged into Steam as " + client.steamID.getSteam3RenderedID());
 	client.setPersona(SteamUser.EPersonaState.Online);
-    setTimeout(send_iieno, 180000);// 180000 ms = 30 minutes
-    process.exit(1);
+    setTimeout(send_iieno, 50);// 180000 ms = 30 seconds
 });
