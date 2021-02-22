@@ -1,3 +1,8 @@
+/*
+TASK:fracdec
+ID:xingrui1
+LANG:C++
+*/
 #include <cstdio>  
 #include <cstring>  
 #include <algorithm>  
@@ -10,6 +15,8 @@ int a, b;
 vector<int> num;  
 map<pair<int, int>, int> done;  
 int main() {  
+    freopen("fracdec.in","r",stdin);
+    freopen("fracdec.out","w",stdout);
     scanf("%d %d", &a, &b);  
     if (!(a % b)) {  
         printf("%d.0\n", a / b);  
