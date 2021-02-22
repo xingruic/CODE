@@ -1,3 +1,8 @@
+/*
+ID:xingrui1
+LANG:C++
+TASK:cowtour
+*/
 #include<bits/stdc++.h>
 using namespace std;
 const int maxn=200;
@@ -12,6 +17,8 @@ double cal(int i,int j){
 int n;
 double dis[maxn][maxn],ldis[maxn],l1,l2=inf,ans;
 int main(){
+    freopen("cowtour.in","r",stdin);
+    freopen("cowtour.out","w",stdout);
     int tmp;
     scanf("%d",&n);
     for(int i=1;i<=n;i++)
@@ -37,6 +44,6 @@ int main(){
             if(dis[i][j]==inf)
                 l2=min(ldis[i]+cal(i,j)+ldis[j],l2);//枚举两个不连通的点，然后就可以计算新的牧区的直径
     ans=max(l1,l2);//有可能新联通的牧场还没有原来的牧场大，所以还要再取一遍最大值
-    printf("%.6f",ans);
+    printf("%.6f\n",ans);
     return 0;
 }

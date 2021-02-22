@@ -1,5 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
+/**
+ * µÚ7×éÎ´¹ı
+ */
 int n;// number of pastures
 pair<int,int> past[155];// (x,y) coordinates of pastures;
 bool path[155][155];// whether two pastures are connected or not
