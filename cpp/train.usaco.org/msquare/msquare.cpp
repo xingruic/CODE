@@ -10,4 +10,5 @@ int main(){
         s+=t;
     }
     cout<<s<<endl;
+    // change
 }
