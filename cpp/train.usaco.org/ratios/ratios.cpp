@@ -35,5 +35,5 @@ struct triple{
 int main(){
     triple goal,one,two,three;
     cin>>goal.a>>goal.b>>goal.c>>one.a>>one.b>>one.c>>two.a>>two.b>>two.c>>three.a>>three.b>>three.c;
-    for(int i=0; i<)
+    
 }
