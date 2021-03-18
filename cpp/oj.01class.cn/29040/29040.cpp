@@ -13,7 +13,7 @@ int main(){
         // cout<<fact[i]<<' ';
     }
     // cout<<endl;
-    int translated=0;
+    long long translated=0;
     for(int i=0; i<n; i++){
         // cout<<translated<<' ';
         int multiplier=mars[i]-1;
@@ -23,26 +23,24 @@ int main(){
         translated+=(multiplier<0?0:multiplier)*fact[n-i-1];
         // cout<<(multiplier<0?0:multiplier)*fact[n-i-1]<<'\t';
     }
+    cout<<translated<<endl;
     translated+=add; // add the given number to the translated number
-    // cout<<translated<<endl;
-    string result="";
-    int a[n];
-    for(int i=0; i<n; i++){
-        a[i]=i+1;
-        // cout<<a[i]<<endl;
-    }
+    cout<<translated<<endl;
+    bool a[n]={0};
+    int print=-1;
     for(int i=n-1; i>=0; i--){
+        // for(int i=0; i<n; i++) cout<<a[i]<<' ';
+        // cout<<endl;
         int t=translated/fact[i];
-        for(int j=0; j<=t; j++){
-            if(a[j]==-1) t++;
-        }
-        assert(t<n);
-        // cout<<endl<<t<<' '<<translated<<' '<<a[t]<<endl;
-        assert(a[t]>0);
-        result=result+(char)(a[t]+'0')+' ';
+        for(int j=0; j<=translated/fact[i]; j++) if(a[j]) t++;
+        while(a[t]) t++;
+        // cout<<t<<endl;
+        assert(t<n); 
+        if(print>0) cout<<print<<endl;
+        print=t+1;
+        a[t]=1;
         translated%=fact[i];
-        a[t]=-1;
     }
-    result.pop_back();
-    cout<<result<<endl;
+    cout<<print<<endl;
 }
+// 3 4 6* 9 8 7 5 2 1
