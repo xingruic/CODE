@@ -1,4 +1,3 @@
-// https://en.wikipedia.org/wiki/Permutation#Generation_in_lexicographic_order
 #include<bits/stdc++.h>
 using namespace std;
 bool my_next_permutation(int a[],int n){
@@ -11,14 +10,10 @@ bool my_next_permutation(int a[],int n){
     return 1;
 }
 int main(){
-    int n;
-    cin>>n;
+    int n,add;
+    cin>>n>>add;
     int a[n];
     for(int i=0; i<n; i++) cin>>a[i];
-    while(my_next_permutation(a,n)){
-        my_next_permutation(a,n);
-        for(int i=0; i<n-1; i++) cout<<a[i]<<' ';
-        cout<<a[n-1]<<endl;
-    }
-    cout<<"no more permutations."<<endl;
+    for(int i=0; i<add; i++) my_next_permutation(a,n);
+    for(int i=0; i<n; i++) cout<<a[i]<<' ';
 }
