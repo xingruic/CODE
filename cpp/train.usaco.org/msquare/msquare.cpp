@@ -1,7 +1,19 @@
+/*
+TASK: msquare
+ID: xingrui1
+LANG: C++
+*/
 #include<bits/stdc++.h>
 using namespace std;
-string S="";
-vector<string> trail,cubes;
+string input,start="12348765";
+map<int,string> m; // map<hash(current_squares),steps_to_current_squares>
+int myhash(string arr){
+    int result=1;
+    for(int i=0; i<8; i++){
+        result=(result*13+arr[i])%1199083267;
+    }
+    return result;
+}
 string trans(string s,char c){
     switch(c){
         case 'A':
@@ -24,44 +36,59 @@ string trans(string s,char c){
     }
     return s;
 }
-bool find_in_trail(string str){
-    for(string i:trail){
-        if(str==i) return 1;
-    }
-    return 0;
-}
 int main(){
-    // failed
     freopen("msquare.in","r",stdin);
     freopen("msquare.out","w",stdout);
-    for(int i=1; i<=8; i++){
+    for(int i=0; i<4; i++){
         char t;
         cin>>t;
-        S+=t;
+        input+=t;
     }
-    cout<<S<<endl;
-    trail.push_back("");
-    cubes.push_back("12348765");
-    string T,C;
-    int min_cnt=0x7fffffff;
-    string min_str="";
-    while(!cubes.empty()){
-        T=trail.front(),C=cubes.front();
-        cout<<C<<' '<<T<<endl;
-        trail.erase(trail.begin());
-        cubes.erase(cubes.begin());
-        if(T.size()>=min_cnt) continue;
-        if(find_in_trail(T)) continue;
-        if(C==S){
-            if(min_cnt>T.size()) min_cnt=T.size(),min_str=T;
-            continue;
+    for(int i=7; i>=4; i--){
+        char t;
+        cin>>t;
+        input+=t;
+    }
+    if(input=="12345678"){
+        cout<<0<<endl<<""<<endl;
+        return 0;
+    }
+    queue<string> q; // bfs queue
+    q.push(trans(start,'A'));
+    q.push(trans(start,'B'));
+    q.push(trans(start,'C'));
+    m[myhash(trans(start,'A'))]="A";
+    m[myhash(trans(start,'B'))]="B";
+    m[myhash(trans(start,'C'))]="C";
+    while(!q.empty()){
+        string t=q.front();
+        // cout<<t<<endl;
+        q.pop();
+        bool flag=1; // 1 -> found target! 0 -> continue finding...
+        for(int i=0; i<4; i++){
+            if(t[i]!=input[i]){
+                flag=0;
+                break;
+            }
         }
-        trail.push_back(T+'A');
-        cubes.push_back(trans(C,'A'));
-        trail.push_back(T+'B');
-        cubes.push_back(trans(C,'B'));
-        trail.push_back(T+'C');
-        cubes.push_back(trans(C,'C'));
+        if(t[4]!=input[7]||t[5]!=input[6]||t[6]!=input[5]||t[7]!=input[4]) flag=0;
+        if(flag){
+            // cout<<"====="<<t<<"====="<<endl;
+            cout<<m[myhash(t)].size()<<endl<<m[myhash(t)]<<endl;
+            return 0;
+        }
+        if(m[myhash(trans(t,'A'))]==""){
+            q.push(trans(t,'A'));
+            m[myhash(trans(t,'A'))]=m[myhash(t)]+'A';
+        }
+        if(m[myhash(trans(t,'B'))]==""){
+            q.push(trans(t,'B'));
+            m[myhash(trans(t,'B'))]=m[myhash(t)]+'B';
+        }
+        if(m[myhash(trans(t,'C'))]==""){
+            q.push(trans(t,'C'));
+            m[myhash(trans(t,'C'))]=m[myhash(t)]+'C';
+        }
     }
-    cout<<min_cnt<<endl<<min_str<<endl;
+    cout<<"???"<<endl;
 }
