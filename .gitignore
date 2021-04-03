@@ -36,10 +36,11 @@
 # *.out
 *.apps
 
+my_stuff/projects/handwriting_recognition
+
 **/HOMEWORK.txt
 
 **/testing.cpp
-**/texting.exe
 
 **/.vscode
 **/DS_Store
