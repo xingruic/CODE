@@ -3,9 +3,9 @@
 * Uses Tello SDK
 
 ## Installing conda environment
-Download [this file](https://raw.githubusercontent.com/NevGithub0823/CODE/master/my_stuff/projects/djitello/tello-conda-env.yml), then in `Anaconda PowerShell Prompt`:
+Download [this file](https://raw.githubusercontent.com/NevGithub0823/CODE/master/my_stuff/projects/djitello/tello-video-conda-env.yml), then in `Anaconda PowerShell Prompt`:
 ``` powershell
-conda env create -f tello-conda-env.yml
+conda env create -f tello-video-conda-env.yml
 ```
 
 ## Installing h264decoder
