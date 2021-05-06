@@ -23,7 +23,7 @@ Backslashes don't work, and Windows will also accept forward slashes.
 git clone https://github.com/dji-sdk/Tello-Python.git
 cd .\Tello-Python\Tello_Video
 ```
-Run the `install/Windows/install.bat` batch script
+Run the `install/Windows/install.bat` batch script.
 
 ## Finishing up
 The official repository uses the wrong module name for the decoder (at least when I'm writing this, [look here](https://github.com/dji-sdk/Tello-Python/tree/4d984874d6cf29e0d7cc76283b339b147c4a9095/Tello_Video)) so we have to change it.
