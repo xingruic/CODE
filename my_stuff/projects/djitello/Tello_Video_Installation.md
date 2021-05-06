@@ -3,13 +3,13 @@
 * Uses Tello SDK
 
 ## Installing conda environment
-Download [this file](https://raw.githubusercontent.com/NevGithub0823/CODE/master/my_stuff/projects/djitello/tello-video-conda-env.yml), then in `Anaconda PowerShell Prompt`:
+Download [this file](https://raw.githubusercontent.com/NevGithub0823/CODE/master/my_stuff/projects/djitello/tello-video-conda-env.yml), then with conda:
 ``` powershell
 conda env create -f tello-video-conda-env.yml
 ```
 
 ## Installing h264decoder
-Download [https://github.com/DaWelter/h264decoder/archive/refs/tags/v1.zip](https://github.com/DaWelter/h264decoder/archive/refs/tags/v1.zip) and extract to folder `.\h264decoder\`, then in PowerShell:
+Download [https://github.com/DaWelter/h264decoder/archive/refs/tags/v1.zip](https://github.com/DaWelter/h264decoder/archive/refs/tags/v1.zip) and extract to folder `.\h264decoder\`, then:
 ``` powershell
 cd h264decoder
 python setup.py build_ext --cmake-args="-DCMAKE_TOOLCHAIN_FILE=/path/to/vcpkg/scripts/buildsystems/vcpkg.cmake"
