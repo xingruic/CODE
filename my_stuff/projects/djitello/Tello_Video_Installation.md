@@ -3,13 +3,13 @@
 * Uses Tello SDK
 
 ## Installing conda environment
-Download [this file](https://raw.githubusercontent.com/NevGithub0823/CODE/master/my_stuff/projects/djitello/tello-video-conda-env.yml), then with conda:
 ``` powershell
-conda env create -f tello-video-conda-env.yml
+conda create -n tello-video python=2.7.18 opencv=3.2.0=np113py27_204 pillow=6.2.1=py27h5b88493_0 boost=1.70.0=py27ha6300db_0
+conda activate tello-video
 ```
 
 ## Installing h264decoder
-Download [https://github.com/DaWelter/h264decoder/archive/refs/tags/v1.zip](https://github.com/DaWelter/h264decoder/archive/refs/tags/v1.zip) and extract to folder `.\h264decoder\`, then:
+Download [https://github.com/DaWelter/h264decoder/archive/refs/tags/v2.zip](https://github.com/DaWelter/h264decoder/archive/refs/tags/v2.zip) and extract to folder `.\h264decoder\`, then:
 ``` powershell
 cd h264decoder
 python setup.py build_ext --cmake-args="-DCMAKE_TOOLCHAIN_FILE=/path/to/vcpkg/scripts/buildsystems/vcpkg.cmake"
@@ -20,11 +20,10 @@ Use forward slashes in `-DCMAKE_TOOLCHAIN_FILE=/path/to/vcpkg/scripts/buildsyste
 ## Installing Tello_Video
 ``` powershell
 git clone https://github.com/dji-sdk/Tello-Python.git
+git reset -hard 4d984874d6cf29e0d7cc76283b339b147c4a9095
 cd .\Tello-Python\Tello_Video
 ```
 Run the `install/Windows/install.bat` batch script.
-
-## Finishing up
 The official repository uses the wrong module name for the decoder (at least when I'm writing this, [look here](https://github.com/dji-sdk/Tello-Python/tree/4d984874d6cf29e0d7cc76283b339b147c4a9095/Tello_Video)) so we have to change it.
 First open the file we need to change:
 ``` powershell
