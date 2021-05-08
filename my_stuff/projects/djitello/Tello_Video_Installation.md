@@ -16,7 +16,6 @@ python setup.py build_ext --cmake-args="-DCMAKE_TOOLCHAIN_FILE=/path/to/vcpkg/sc
 pip install -e .
 ```
 Use forward slashes in `-DCMAKE_TOOLCHAIN_FILE=/path/to/vcpkg/scripts/buildsystems/vcpkg.cmake`.
-Backslashes don't work, and Windows will also accept forward slashes.
 
 ## Installing Tello_Video
 ``` powershell
@@ -39,4 +38,4 @@ Then, at the top of the file, change `import libh264decoder` to `import h264deco
 	``` powershell
 	python main.py
 	```
-* A window should pop up, showing the video stream from tello. Other functionaity is pretty self-explanatory.
+* A window should pop up, showing the video stream from tello. Other functionality is pretty self-explanatory.
