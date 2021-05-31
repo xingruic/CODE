@@ -37,4 +37,4 @@ Then, at the top of the file, change `import libh264decoder` to `import h264deco
 	``` powershell
 	python main.py
 	```
-* A window should pop up, showing the video stream from tello. Other functionality is pretty self-explanatory.
+* A window should pop up, showing the video stream from tello.
