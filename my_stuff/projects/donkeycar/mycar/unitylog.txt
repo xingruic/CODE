@@ -1,0 +1,108 @@
+Mono path[0] = 'X:/GitHub/CODE/my_stuff/projects/donkeycar/DonkeySimWin/donkey_sim_Data/Managed'
+Mono config path = 'X:/GitHub/CODE/my_stuff/projects/donkeycar/DonkeySimWin/MonoBleedingEdge/etc'
+Initialize engine version: 2019.3.0f1 (ffacea4b84e7)
+[Subsystems] Discovering subsystems at path X:/GitHub/CODE/my_stuff/projects/donkeycar/DonkeySimWin/donkey_sim_Data/UnitySubsystems
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: AMD Radeon Pro 5500M (ID=0x7340)
+    Vendor:   
+    VRAM:     4056 MB
+    Driver:   26.20.13003.5002
+Begin MonoManager ReloadAssembly
+- Completed reload, in  0.097 seconds
+D3D11 device created for Microsoft Media Foundation video decoding.
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 0.583100 ms
+SDSandbox Server starting. 
+(Filename: C:\buildslave\unity\build\Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+Server Listening on: 0.0.0.0:9091 
+(Filename: C:\buildslave\unity\build\Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+Waiting for a connection... 
+(Filename: C:\buildslave\unity\build\Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+SDSandbox Server starting. 
+(Filename: C:\buildslave\unity\build\Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+Server Listening on: 0.0.0.0:9092 
+(Filename: C:\buildslave\unity\build\Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+Waiting for a connection... 
+(Filename: C:\buildslave\unity\build\Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+Setting up 8 worker threads for Enlighten.
+  Thread -> id: 2cc -> priority: 1 
+  Thread -> id: 42c4 -> priority: 1 
+  Thread -> id: 1900 -> priority: 1 
+  Thread -> id: 8d8 -> priority: 1 
+  Thread -> id: 3204 -> priority: 1 
+  Thread -> id: 540 -> priority: 1 
+  Thread -> id: 2e80 -> priority: 1 
+  Thread -> id: 7e0 -> priority: 1 
+mini_monaco 
+(Filename: C:\buildslave\unity\build\Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+loaded scene 
+(Filename: C:\buildslave\unity\build\Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+Waiting for a connection... 
+(Filename: C:\buildslave\unity\build\Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+client connected. 
+(Filename: C:\buildslave\unity\build\Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+Unloading 10 Unused Serialized files (Serialized files now loaded: 0)
+WARNING: Shader Unsupported: 'Hidden/Nature/Terrain/Utilities' - All passes removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+ERROR: Shader Shader is not supported on this GPU (none of subshaders/fallbacks are suitable)WARNING: Shader Unsupported: 'Hidden/Nature/Terrain/Utilities' - Setting to default shader.
+UnloadTime: 6.026100 ms
+JustOne removing instance.MainThDisp 
+(Filename: C:\buildslave\unity\build\Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+JustOne removing instance.SandboxServer 
+(Filename: C:\buildslave\unity\build\Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+JustOne removing instance.SandboxPrivateAPIServer 
+(Filename: C:\buildslave\unity\build\Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+Added timer 
+(Filename: C:\buildslave\unity\build\Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+car loaded. 
+(Filename: C:\buildslave\unity\build\Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+
+Unloading 32 unused Assets to reduce memory usage. Loaded Objects now: 6425.
+Total: 5.311900 ms (FindLiveObjects: 0.442200 ms CreateObjectMapping: 0.085600 ms MarkObjects: 2.520600 ms  DeleteObjects: 2.263100 ms)
+
+DirectoryNotFoundException: Could not find a part of the path "X:\GitHub\CODE\my_stuff\projects\donkeycar\DonkeySimWin\log\log_car_controls.txt".
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0017d] in <c79628fadf574d3a8feae0871fad28ef>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options, System.String msgPath, System.Boolean bFromProxy, System.Boolean useLongPath, System.Boolean checkHost) [0x00000] in <c79628fadf574d3a8feae0871fad28ef>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions,string,bool,bool,bool)
+  at System.IO.StreamWriter.CreateFile (System.String path, System.Boolean append, System.Boolean checkHost) [0x0001c] in <c79628fadf574d3a8feae0871fad28ef>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize, System.Boolean checkHost) [0x00055] in <c79628fadf574d3a8feae0871fad28ef>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00000] in <c79628fadf574d3a8feae0871fad28ef>:0 
+  at System.IO.StreamWriter..ctor (System.String path) [0x00008] in <c79628fadf574d3a8feae0871fad28ef>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string)
+  at Logger.Awake () [0x0004c] in <27ab55d8fb104fe2ad623eac410cbdae>:0 
+UnityEngine.GameObject:SetActive(Boolean)
+MenuHandler:OnManualGenerateTrainingData()
+UnityEngine.Events.InvokableCall:Invoke()
+UnityEngine.Events.UnityEvent:Invoke()
+UnityEngine.UI.Button:Press()
+UnityEngine.UI.Button:OnPointerClick(PointerEventData)
+UnityEngine.EventSystems.ExecuteEvents:Execute(IPointerClickHandler, BaseEventData)
+UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1)
+UnityEngine.EventSystems.StandaloneInputModule:ReleaseMouse(PointerEventData, GameObject)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent(Int32)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent()
+UnityEngine.EventSystems.StandaloneInputModule:Process()
+UnityEngine.EventSystems.EventSystem:Update()
+ 
+(Filename: <c79628fadf574d3a8feae0871fad28ef> Line: 0)
+
