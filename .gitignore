@@ -41,6 +41,7 @@
 
 # DonkeySimWin has large files
 my_stuff/projects/donkeycar/DonkeySimWin/
+my_stuff/projects/donkeycar/DonkeySimWin.zip
 
 # Ignore DonkeyCar Data
 my_stuff/projects/donkeycar/**/data/
