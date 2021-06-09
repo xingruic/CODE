@@ -4,28 +4,36 @@ var client = new SteamUser();
 
 var username = "usedtoilet666";
 var password = "Chenxi202";
-var message = ".";
 
 client.logOn({
-	"accountName": username,
-	"password": password
+    "accountName": username,
+    "password": password
 });
-
 var iieno = new SteamID("[U:1:1080833819]");
-function send_iieno(i=1){
-    if(i>50) process.exit();
-    client.chatMessage(iieno, message);
-    console.log("[MSG] sent message to iieno");
-    setTimeout(
-        function() {
-            send_iieno(i+1);
-        },
-        50
-    );
+var message = 33 - 3; // ascii 33 is the first visible character
+function send_iieno(i = 0) {
+    message += 3;
+    if (i === 15) process.exit();
+    client.chatMessage(iieno, message.toString() + ' ' + String.fromCharCode(message));
+    console.log("[MSG] sent " + message.toString() + " to iieno");
+    if (i % 3 === 0) {
+        setTimeout(
+            function () {
+                send_iieno(i + 1);
+            },
+            3000
+        );
+    } else {
+        setTimeout(
+            function () {
+                send_iieno(i + 1);
+            },
+            1000
+        );
+    }
 }
-
-client.on('loggedOn', function(details) {
-	console.log("[LOGIN] Logged into Steam as " + client.steamID.getSteam3RenderedID());
-	client.setPersona(SteamUser.EPersonaState.Online);
-    setTimeout(send_iieno, 50);// 180000 ms = 30 seconds
+client.on('loggedOn', function (_details) {
+    console.log("[LOGIN] Logged in as " + client.steamID.getSteam3RenderedID());
+    client.setPersona(SteamUser.EPersonaState.Online);
+    send_iieno();
 });
