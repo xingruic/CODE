@@ -16,6 +16,7 @@ client.on('loggedOn', function (_details) {
     for (var j = Math.floor(Math.random() * 100); j >= 0; j--) {
         message += Math.floor(Math.random() * 10).toString();
     }
+    message = message.repeat(message[0]);
     setTimeout(function () {
         client.chatMessage(iieno, message);
         console.log("[MSG] " + message);
