@@ -10,30 +10,17 @@ client.logOn({
     "password": password
 });
 var iieno = new SteamID("[U:1:1080833819]");
-var message = 33 - 3; // ascii 33 is the first visible character
-function send_iieno(i = 0) {
-    message += 3;
-    if (i === 15) process.exit();
-    client.chatMessage(iieno, message.toString() + ' ' + String.fromCharCode(message));
-    console.log("[MSG] sent " + message.toString() + " to iieno");
-    if (i % 3 === 0) {
-        setTimeout(
-            function () {
-                send_iieno(i + 1);
-            },
-            3000
-        );
-    } else {
-        setTimeout(
-            function () {
-                send_iieno(i + 1);
-            },
-            1000
-        );
-    }
-}
 client.on('loggedOn', function (_details) {
     console.log("[LOGIN] Logged in as " + client.steamID.getSteam3RenderedID());
-    client.setPersona(SteamUser.EPersonaState.Online);
-    send_iieno();
+    var message = "";
+    for (var j = Math.floor(Math.random() * 100); j >= 0; j--) {
+        message += Math.floor(Math.random() * 10).toString();
+    }
+    setTimeout(function () {
+        client.chatMessage(iieno, message);
+        console.log("[MSG] " + message);
+    }, 500);
+    setTimeout(function () {
+        process.exit()
+    }, 600);
 });

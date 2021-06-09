@@ -13,6 +13,8 @@ be a self-contained module which provides all the functionality expected of a St
 
 **Have a question about the module or coding in general? *Do not create a GitHub issue.* GitHub issues are for feature requests and bug reports. Instead, post in the [dedicated forum](https://dev.doctormckay.com/forum/7-node-steam-user/). Such issues may be ignored!**
 
+[Upgrading from v3?](https://github.com/DoctorMcKay/node-steam-user/releases/tag/v4.0.0)
+
 ## Installation
 
 Install it from [npm](https://www.npmjs.com/package/steam-user):
@@ -290,7 +292,7 @@ URL). Falsy if you don't have one.
 An object containing information about your account. `null` until [`accountInfo`](#accountinfo-1) is emitted.
 
 - `name` - Your account's Steam (persona) name
-- `country` - The character code from which you're logging in (via GeoIP), e.g. "US"
+- `country` - The country code from which you're logging in (via GeoIP), e.g. "US"
 - `authedMachines` - How many machines are authorized to login to your account with Steam Guard
 - `flags` - Your account's bitwise [flags](https://github.com/SteamRE/SteamKit/blob/b80cdf5249891d54c655e39262d8267c7b40b249/Resources/SteamLanguage/enums.steamd#L81-L113)
 - `facebookID` - If your account is linked with Facebook, this is your Facebook account ID
@@ -432,7 +434,7 @@ Contains the name of this package. The value is always `"steam-user"`. This allo
 
 **v4.2.0 or later is required to use this property**
 
-Contains the version of this page. For example, `"4.2.0"`. This allows other modules to verify interoperability.
+Contains the version of this package. For example, `"4.2.0"`. This allows other modules to verify interoperability.
 
 # Methods [^](#contents)
 
@@ -440,6 +442,8 @@ Contains the version of this page. For example, `"4.2.0"`. This allows other mod
 - `options` - An optional object containing zero or more [options](#options-) to set for this `SteamUser`.
 
 Constructs a new `SteamUser`.
+
+Prior to v4.0.0, it was possible to pass a SteamClient instance as the first argument to this constructor. This functionality was removed in v4.0.0. [See the full list of v4 changes.](https://github.com/DoctorMcKay/node-steam-user/releases/tag/v4.0.0)
 
 ### setOption(option, value)
 - `option` - The name of the option to set
@@ -1611,6 +1615,8 @@ in sub 0, you need to request a license for it using this method.
 If successful, calling this method will result in the [`licenses`](#licenses-1) event being emitted containing your new
 license(s).
 
+**Please note:** This method is rate-limited to approximately 50 apps per hour.
+
 ### getEncryptedAppTicket(appid[, userData], callback)
 - `appid` - The Steam AppID of the app for which you want a ticket
 - `userData` - If the app expects some "user data" (arbitrary data which will be encrypted into the ticket), provide it here. Otherwise, omit this argument or pass an empty Buffer.
@@ -1671,6 +1677,10 @@ This event will be emitted when Steam requests a Steam Guard code from us.
 You should collect the code from the user somehow and then call the `callback` with the code as the sole argument.
 
 If no listener is bound to this event, then `steam-user` will prompt the user for a code via stdin.
+
+**If you are using 2FA, you need to check the `lastCodeWrong` argument.** If it's true, then the last code you provided
+was incorrect (likely already used). In this case, you should wait 30 seconds to allow the TOTP algorithm to generate a
+new code. Failure to do so will result in a login loop, causing your IP address to be temporarily banned.
 
 Example:
 
