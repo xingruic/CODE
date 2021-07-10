@@ -33,7 +33,11 @@ int _hash() {
     // cerr << res << endl;
     return res;
 }
+int cnt;
 void spin() {
+#ifdef DEBUG
+    cerr << cnt << endl;
+#endif
     for (int i = 0; i < 5; i++) {
         wheels[i].rot += wheels[i].speed;
         wheels[i].rot %= 360;
@@ -65,10 +69,9 @@ int main() {
             }
         }
     }
-    int i;
-    for (i = 0;!check();i++) {
+    for (cnt = 0;!check();cnt++) {
         spin();
     }
-    cout << i << endl;
+    cout << cnt << endl;
     return 0;
 }
