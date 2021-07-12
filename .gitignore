@@ -39,6 +39,7 @@
 **/.vscode
 **/.DS_Store
 **/*.dSYM/**
+**/.DS_Store
 
 .ipynb_checkpoints
 
