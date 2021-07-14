@@ -2,24 +2,38 @@
 #define DEBUG
 using namespace std;
 struct wheel {
-    vector<pair<int, int> > wedges;
+    vector<pair<int, int>> wedges;
     int speed;
     int rot = 0;
 }wheels[5];
 bool thru[360];
 bool check() {
+    memset(thru, 1, sizeof(thru));
     for (int i = 0; i < 360; i++) {
+        cerr << '[';
         for (int j = 0; j < 5; j++) {
             for (auto k : wheels[j].wedges) {
-                if (k.first > thru[i] && k.second < thru[i]) {
+#ifdef DEBUG
+                cerr << k.first << ',' << k.second << ' ';
+#endif
+                if ((k.first <= k.second && k.first <= i && k.second >= i) || (k.first > k.second && (k.second >= i || k.first <= i))) {
+#ifdef DEBUG
+                    cerr << "break";
+#endif
                     thru[i] = 0;
                     break;
                 }
             }
-            if (thru[i] == 0) break;
+            if (!thru[i]) break;
         }
+        if (thru[i]) return 1;
+#ifdef DEBUG
+        cerr << ']' << ' ';
+#endif
     }
-    if (find(thru, thru + 360, 1) != thru + 360) return 1;
+#ifdef DEBUG
+    cerr << endl;
+#endif
     return 0;
 }
 vector<int> hashes;
@@ -35,21 +49,10 @@ int _hash() {
 }
 int cnt;
 void spin() {
-#ifdef DEBUG
-    cerr << cnt << endl;
-#endif
     for (int i = 0; i < 5; i++) {
         wheels[i].rot += wheels[i].speed;
         wheels[i].rot %= 360;
-#ifdef DEBUG
-        for (auto j : wheels[i].wedges) {
-            cerr << (j.first + wheels[i].rot) % 360 << ',' << (j.second + wheels[i].rot) % 360 << '\t';
-        }cerr << endl;
-#endif
     }
-#ifdef DEBUG
-    cerr << endl;
-#endif
     int h = _hash();
     if (find(hashes.begin(), hashes.end(), h) != hashes.end()) {
         cout << "none" << endl;
@@ -58,7 +61,9 @@ void spin() {
     hashes.push_back(h);
 }
 int main() {
-    memset(thru, 0, sizeof(thru));
+    freopen("spin.in", "r", stdin);
+    freopen("spin.out", "w", stdout);
+    freopen("spin.err", "w", stderr);
     {
         int w, a, b;
         for (int i = 0; i < 5; i++) {
