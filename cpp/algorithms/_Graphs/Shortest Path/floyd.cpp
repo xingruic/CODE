@@ -15,10 +15,10 @@ int main()
             if (a[i][j] == -1)
                 a[i][j] = 0x3c3c3c3c;
         }
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
-            for (int k = 0; k < n; k++)
-                if (a[i][j] + a[i][k] < a[j][k])
-                    a[j][k] = a[i][j] + a[i][k];
+    for (int k = 0; k < n; k++) // make sure that k is on the outside!
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                if (a[i][j] + a[j][k] < a[i][k])
+                    a[i][k] = a[i][j] + a[j][k];
     cout << a[start][end] << endl;
 }
