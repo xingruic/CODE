@@ -80,6 +80,7 @@ agrinet,ad hoc
 ariprog,ad hoc
 barn1,ad hoc
 beads,dp
+butter,floyd
 castle,fill
 combo,ad hoc
 comehome,dijkstra
@@ -111,6 +112,7 @@ ride,ad hoc
 runround,ad hoc
 skidesign,ad hoc
 sort3,ad hoc
+spin,PENDING
 sprime,recursion
 stamps,dp
 subset,recursion
