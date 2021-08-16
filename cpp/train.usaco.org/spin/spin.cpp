@@ -1,82 +1,83 @@
+/*
+ID:xingrui1
+LANG:C++
+TASK:spin
+*/
 #include<bits/stdc++.h>
-#define DEBUG
 using namespace std;
-struct wheel {
-    vector<pair<int, int>> wedges;
-    int speed;
-    int rot = 0;
-}wheels[5];
-bool thru[360];
-bool check() {
-    memset(thru, 1, sizeof(thru));
-    for (int i = 0; i < 360; i++) {
-        cerr << '[';
-        for (int j = 0; j < 5; j++) {
-            for (auto k : wheels[j].wedges) {
-#ifdef DEBUG
-                cerr << k.first << ',' << k.second << ' ';
-#endif
-                if ((k.first <= k.second && k.first <= i && k.second >= i) || (k.first > k.second && (k.second >= i || k.first <= i))) {
-#ifdef DEBUG
-                    cerr << "break";
-#endif
-                    thru[i] = 0;
-                    break;
-                }
-            }
-            if (!thru[i]) break;
-        }
-        if (thru[i]) return 1;
-#ifdef DEBUG
-        cerr << ']' << ' ';
-#endif
-    }
-#ifdef DEBUG
-    cerr << endl;
-#endif
-    return 0;
-}
-vector<int> hashes;
-int _hash() {
-    int res = 0;
-    for (int i = 0; i < 5; i++) {
-        res = res * 7 + wheels[i].rot;
-        // cerr << res << ' ';
-    }
-    res %= 164093;
-    // cerr << res << endl;
-    return res;
-}
-int cnt;
+int rot[6] = { 0 }, speed[6], cnt = 0;
+vector<pair<int, int>> wedges[6];
 void spin() {
-    for (int i = 0; i < 5; i++) {
-        wheels[i].rot += wheels[i].speed;
-        wheels[i].rot %= 360;
+    cnt++;
+    for (int i = 1; i <= 5; i++) {
+        rot[i] += speed[i];
+        rot[i] %= 360;
     }
-    int h = _hash();
-    if (find(hashes.begin(), hashes.end(), h) != hashes.end()) {
-        cout << "none" << endl;
-        exit(0);
+}
+bool check() {
+    bool thru[361];
+    memset(thru, 1, sizeof(thru));
+    thru[0] = 0;
+    for (int i = 1; i <= 360; i++) {
+        for (int j = 1; j <= 5; j++) {
+            bool f = 0;
+            for (auto k : wedges[j]) {
+                int t1 = k.first, t2 = k.second;
+                k.first += rot[j];
+                k.second += rot[j];
+                k.first %= 360;
+                k.second %= 360;
+                if (k.first < k.second && k.first <= i && k.second >= i) {
+                    f = 1;
+                    // cerr << 1 << endl;
+                }
+                if (k.first >= k.second && (k.first <= i || k.second >= i)) {
+                    f = 1;
+                    // cerr << 1 << endl;
+                }
+                k.first = t1, k.second = t2;
+                if (f) break;
+            }
+            if (!f) {
+                thru[i] = 0;
+                break;
+            }
+        }
     }
-    hashes.push_back(h);
+    auto f = find(thru, thru + 361, 1);
+    if (f != thru + 361) {
+        // cerr << distance(thru, f) << endl;
+        return 1;
+    }
+    return 0;
 }
 int main() {
     freopen("spin.in", "r", stdin);
     freopen("spin.out", "w", stdout);
-    freopen("spin.err", "w", stderr);
+    // freopen("spin.err", "w", stderr);
     {
-        int w, a, b;
-        for (int i = 0; i < 5; i++) {
-            cin >> wheels[i].speed >> w;
-            for (int j = 0; j < w; j++) {
+        int n, a, b;
+        for (int i = 1; i <= 5; i++) {
+            cin >> speed[i];
+            cin >> n;
+            for (int j = 1; j <= n; j++) {
                 cin >> a >> b;
-                wheels[i].wedges.push_back(make_pair(a, (a + b) % 360));
+                wedges[i].push_back(make_pair(a, (a + b) % 360));
             }
         }
     }
-    for (cnt = 0;!check();cnt++) {
+    for (int i = 0; i < 360; i++) {
+        if (check()) {
+            cout << cnt << endl;
+            exit(0);
+        }
         spin();
+        // if (i == 1) {
+        //     for (int i = 1; i <= 5; i++) {
+        //         for (auto j : wedges[i]) cerr << (j.first + rot[i]) % 360 << '-' << (j.second + rot[i]) % 360 << ',';
+        //         cerr << endl;
+        //     }
+        // }
     }
-    cout << cnt << endl;
-    return 0;
+    cout << "none" << endl;
 }
