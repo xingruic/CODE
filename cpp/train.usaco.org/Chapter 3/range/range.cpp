@@ -1,47 +1,39 @@
 /*
 ID:xingrui
 LANG:C++
-TASK:fence
+TASK:range
 */
 #include<bits/stdc++.h>
 using namespace std;
-int n;
-int a[250][250];
-bool check(int i,int j,int size){
-    if(i+size-1>=n||j+size-1>=n) return 0;
-    for(int a=i; a<i+size; a++){
-        for(int b=j; b<j+size; b++){
-            if(::a[a][b]==0) return 0;
+bool a[251][251];
+bool sq[251][251]; // sq[i][j][k] = is there a square of size k with top left corner at i,j ?
+int main() {
+    cerr << 0 << endl;
+    freopen("range.in", "r", stdin);
+    freopen("range.out", "w", stdout);
+    int n;
+    cin >> n;
+    memset(sq, 0, sizeof(sq));
+    memset(a, 0, sizeof(a));
+    string s;
+    getline(cin, s);
+    for (int i = 1; i <= n; i++) {
+        getline(cin, s);
+        for (int j = 1; j <= n; j++) {
+            a[i][j] = s[j - 1] == '1';
+            sq[i][j] = a[i][j]; // squares of size 1
         }
     }
-    return 1;
-}
-int main(){
-    freopen("range.in","r",stdin);
-    freopen("range.out","w",stdout);
-    cin>>n;
-    for(int i=0; i<n; i++){
-        for(int j=0; j<n; j++){
-            a[i][j]=getchar();
-            if(a[i][j]=='\n') a[i][j]=getchar();
-            a[i][j]-='0';
-        }
-    }
-    // for(int i=0; i<n; i++){
-    //     for(int j=0; j<n; j++){
-    //         cout<<a[i][j]<<' ';
-    //     }cout<<endl;
-    // }
-    int cnt[n+1]={0};
-    for(int s=2; s<=n; s++){
-        for(int i=0; i<n; i++){
-            for(int j=0; j<n; j++){
-                if(check(i,j,s)){
-                    // cout<<i<<' '<<j<<' '<<s<<endl;
-                    cnt[s]++;
-                }
+    // cerr << 1 << endl;
+    // dp
+    for (int l = 2; l <= n; l++) {
+        int cnt = 0;
+        for (int i = 1; i + l - 1 <= n; i++)
+            for (int j = 1; j + l - 1 <= n; j++) {
+                sq[i][j] = a[i][j] && sq[i + 1][j] && sq[i][j + 1] && sq[i + 1][j + 1];
+                if (sq[i][j]) cnt++;
             }
-        }
+        if (cnt > 0)cout << l << ' ' << cnt << endl;
     }
-    for(int i=2; i<=n; i++) if(cnt[i]>0) cout<<i<<' '<<cnt[i]<<endl;
+    // cerr << 2 << endl;
 }
