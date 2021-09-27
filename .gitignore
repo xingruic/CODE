@@ -42,9 +42,11 @@ testing.*
 
 .ipynb_checkpoints
 
-# DonkeySimWin has large files
+
+# Other ignores
+## Donkeycar
 my_stuff/projects/donkeycar/DonkeySimWin/
 my_stuff/projects/donkeycar/DonkeySimWin.zip
-
-# Ignore DonkeyCar Data
 my_stuff/projects/donkeycar/**/data/
+## Exercism
+exercism/
