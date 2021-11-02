@@ -10,7 +10,7 @@ int song[21]; // stores the length of the song
 int ans = 0;
 void solve(int x = 0, int y = 0, int z = 0, int mcnt = 0) { // x=song,y=disk,z=cnt,mcnt=(minute we're on in this disk)
     // cout << x << ' ' << y << ' ' << z << ' ' << mcnt << '\n';
-    if (x > n || y >= m && mcnt == t) {
+    if (x > n || y > m) {
         ans = max(ans, z);
         return;
     }
