@@ -20,18 +20,19 @@ int main() {
     do {
         done = 1;
         for (int i = 1; i <= n; i++) {
+            if (i == 1) cnt++;
             if (adj[i] > 0) {
                 done = 0;
-                if (plus == 0) {
-                    plus = 1;
+                if (plus == 1) {
+                    plus = 0;
                     cnt++;
                 }
                 adj[i]--;
             }
             else if (adj[i] < 0) {
                 done = 0;
-                if (plus == 1) {
-                    plus = 0;
+                if (plus == 0) {
+                    plus = 1;
                     cnt++;
                 }
                 adj[i]++;
