@@ -1,40 +1,49 @@
 #include<bits/stdc++.h>
 using namespace std;
-int n;
-bool beside[9][9]; // 1-8, ordered Bessie, Buttercup, Belinda, Beatrice, Bella, Blue, Betsy, and Sue.
-string names[9] = { "Bessie", "Buttercup", "Belinda", "Beatrice", "Bella", "Blue", "Betsy", "Sue" };
-int len[9] = { 0,6,9,7,8,5,4,5,3 };
-int toNum(string t) {
-    int x;
-    if (t[0] == 'S') x = 7;
-    else {
-        if (t[1] == 'u') x = 2;
-        else if (t[1] == 'l') x = 6;
-        else {
-            if (t[2] == 's') x = 1;
-            else if (t[2] == 'a') x = 4;
-            else if (t[2] == 't') x = 6;
-            else {
-                if (t[3] == 'i') x = 3;
-                else x = 5;
-            }
-        }
-    }
-    return x;
-}
-int main() {
-    cin >> n;
-    string t;
-    for (int i = 1; i <= n; i++) {
-        cin >> t;
-        int x = toNum(t);
-        int xx = toNum(t.substr(len[x] + 23));
-        beside[x][xx] = beside[xx][x] = 1;
-    }
-    int shuffle[9] = { 0,1,2,3,4,5,6,7,8 };
-    while (next_permutation(shuffle + 1, shuffle + 9)) {
-        for (int i = 1; i <= 9; i++) {
 
-        }
+vector<string> cows, beside_a, beside_b;
+int N;
+
+int where(string c) {
+    for (int i = 0; i < 8; i++)
+        if (cows[i] == c) return i;
+    return -1;
+}
+
+bool check(void) {
+    for (int i = 0; i < N; i++)
+        if (abs(where(beside_a[i]) - where(beside_b[i])) != 1) return false;
+    return true;
+}
+
+int main(void) {
+    freopen("lineup.in", "r", stdin);
+    freopen("lineup.out", "w", stdout);
+    cin >> N;
+    cows.push_back("Beatrice");
+    cows.push_back("Belinda");
+    cows.push_back("Bella");
+    cows.push_back("Bessie");
+    cows.push_back("Betsy");
+    cows.push_back("Blue");
+    cows.push_back("Buttercup");
+    cows.push_back("Sue");
+    string a, b, t;
+    for (int i = 0; i < N; i++) {
+        cin >> a;
+        cin >> t; // "must"
+        cin >> t; // "be"
+        cin >> t; // "milked"
+        cin >> t; // "beside"
+        cin >> b;
+        beside_a.push_back(a);
+        beside_b.push_back(b);
     }
+    do {
+        if (check()) {
+            for (int i = 0; i < 8; i++) cout << cows[i] << "\n";
+            break;
+        }
+    } while (next_permutation(cows.begin(), cows.end()));
+    return 0;
 }
