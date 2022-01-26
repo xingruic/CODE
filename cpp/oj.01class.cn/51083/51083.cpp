@@ -16,22 +16,24 @@ int main() {
     }
     included[1] = 1;
     int cnt = 1; // how many intersections are included
-    int sum = 0; // mst total value
+    int max_min_val = 0; // maximum min_val
     while (cnt < n) {
         int min_val = 0x7fffffff, min_j;
         for (int i = 1; i <= m; i++) {
             if (included[i]) {
                 for (int j = 1; j <= m; j++) {
                     if (a[i][j] >= 0 && !included[j]) {
-                        min_val = min(min_val, a[i][j]);
-                        min_j = j;
+                        if (a[i][j] < min_val) {
+                            min_val = a[i][j];
+                            min_j = j;
+                        }
                     }
                 }
             }
         }
-        sum += min_val;
+        max_min_val = max(max_min_val, min_val);
         included[min_j] = 1;
         cnt++;
     }
-    cout << n - 1 << ' ' << sum << endl;
+    cout << n - 1 << ' ' << max_min_val << endl;
 }
