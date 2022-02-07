@@ -37,6 +37,7 @@ void feed(vector<long long> hunger, int cnt = 0) {
     return;
 }
 int main() {
+    freopen("prob3_bronze_jan22/2.in","r",stdin);
     memset(num, -1, sizeof(num));
     memset(mem, 0, sizeof(mem));
     cin >> t;
