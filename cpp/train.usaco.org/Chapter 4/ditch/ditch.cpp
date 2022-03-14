@@ -8,8 +8,8 @@ using namespace std;
 int n, m;
 int s[201], e[201], c[201];
 struct Edge {
-    int x, y, a;
-    Edge(int s, int e, int c) :x(s), y(e), a(c) {};
+    int a, b, x;
+    Edge(int s, int e, int c) :a(s), b(e), x(c) {}
 };
 vector<Edge> edges;
 int ans = 0;
@@ -17,16 +17,11 @@ void find(vector<int> been, int x = 1, int cap = 0x7fffffff) {
     if (x == m) {
         for (int i = 1; i < been.size(); i++) {
             for (int j = 0; j < edges.size(); j++) {
-                if (edges[j].x == been[i - 1] && edges[j].y == been[i]) {
-                    edges[j].a -= cap;
-                    if (edges[j].a == 0) {
-                        edges[j].a = cap;
-                        swap(edges[j].x, edges[j].y);
+                if (edges[j].a == been[i - 1] && edges[j].b == been[i]) {
+                    edges[j].x -= cap;
+                    if (edges[j].x == 0) {
+                        swap(edges[j].a, edges[j].b);
                     }
-                    else {
-                        edges.push_back(Edge(edges[j].y, edges[j].x, cap));
-                    }
-                    ans += cap;
                 }
             }
         }
